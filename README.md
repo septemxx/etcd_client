@@ -1,182 +1,183 @@
 # ETCD Client
 
-## 项目简介
-ETCD Client 是一个基于 Tauri 和 React 开发的跨平台 ETCD 管理工具，旨在提供直观、高效的 ETCD 键值对管理界面。
+A cross-platform ETCD management tool built with Tauri and React, providing an intuitive and efficient interface for managing ETCD key-value pairs.
 
-### 产品背景
-ETCD 是一个分布式键值存储系统，广泛应用于容器编排、服务发现等场景。然而，目前 ETCD 的管理工具相对缺乏，尤其是跨平台的图形化界面工具。本项目旨在解决这一问题，为开发人员和运维人员提供一个易用的 ETCD 管理界面。
+## Overview
 
-### 目标
-- 提供跨平台的 ETCD 管理界面
-- 支持 ETCD 连接管理
-- 提供键值对的增删改查功能
-- 支持键的树形结构展示
-- 提供简单直观的用户操作体验
+ETCD Client is a desktop application developed using Tauri and React, designed to provide a user-friendly interface for managing ETCD key-value stores. It supports connection management, CRUD operations on key-value pairs, and intuitive tree-based key navigation.
 
-## 核心功能
+## Features
 
-1. **连接管理**
-   - 支持添加、编辑、删除 ETCD 连接配置
-   - 支持连接测试
-   - 支持保存多个连接配置
+### Connection Management
+- Add, edit, and delete ETCD connection configurations
+- Test connections before saving
+- Support multiple saved connection profiles
 
-2. **键值管理**
-   - 支持键值对的添加、编辑、删除
-   - 支持按前缀过滤键
-   - 支持键的树形结构展示
-   - 支持键值的复制功能
+### Key-Value Operations
+- Add, edit, and delete key-value pairs
+- Filter keys by prefix
+- Tree-based key structure display
+- Copy key values to clipboard
 
-3. **用户界面**
-   - 响应式设计，适配不同屏幕尺寸
-   - 直观的操作流程
-   - 实时反馈操作结果
+### User Interface
+- Responsive design for different screen sizes
+- Intuitive operation flow
+- Real-time operation feedback
 
-## 技术栈
+## Tech Stack
 
-### 前端
+### Frontend
 - React 19
 - TypeScript
 - Ant Design
 - Tailwind CSS
 - Vite
 
-### 后端
+### Backend
 - Rust
 - Tauri
 - etcd-client
 - Tokio
 
-## 开发环境
+## Project Structure
 
-### 前端依赖
+```
+etcd_client/
+├── .github/            # GitHub configurations
+│   └── workflows/      # CI/CD configuration
+├── public/             # Static assets
+├── src/                # Frontend code
+│   ├── assets/         # Frontend assets
+│   ├── layouts/        # Layout components
+│   ├── pages/          # Page components
+│   ├── store/          # State management
+│   ├── types/          # Type definitions
+│   ├── utils/          # Utility functions
+│   ├── App.tsx         # Main application component
+│   └── main.tsx        # Application entry point
+├── src-tauri/          # Tauri backend code
+│   ├── capabilities/   # Capability configuration
+│   ├── icons/          # Application icons
+│   ├── src/            # Rust source code
+│   ├── Cargo.toml      # Rust dependencies
+│   └── tauri.conf.json # Tauri configuration
+├── docs/               # Documentation
+├── README.md           # Project documentation
+├── package.json        # Frontend dependencies
+└── tsconfig.json       # TypeScript configuration
+```
+
+## Getting Started
+
+### Prerequisites
+
+**Frontend:**
 - Node.js 18+
-- npm 或 yarn
+- npm or yarn
 
-### 后端依赖
+**Backend:**
 - Rust 1.60+
 - Cargo
 
-### 推荐 IDE
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+**Recommended IDE:**
+- [VS Code](https://code.visualstudio.com/) with [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) and [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) extensions
 
-## 项目结构
+### Installation
 
-```
-etcd_ui_trae/
-├── .github/            # GitHub 配置
-│   └── workflows/      # CI/CD 配置
-├── public/             # 静态资源
-├── src/                # 前端代码
-│   ├── assets/         # 前端资源
-│   ├── layouts/        # 布局组件
-│   ├── pages/          # 页面组件
-│   ├── store/          # 状态管理
-│   ├── types/          # 类型定义
-│   ├── utils/          # 工具函数
-│   ├── App.tsx         # 应用主组件
-│   └── main.tsx        # 应用入口
-├── src-tauri/          # Tauri 后端代码
-│   ├── capabilities/   # 能力配置
-│   ├── icons/          # 应用图标
-│   ├── src/            # Rust 源代码
-│   ├── Cargo.toml      # Rust 依赖配置
-│   └── tauri.conf.json # Tauri 配置
-├── docs/               # 文档目录
-├── README.md           # 项目主文档
-├── package.json        # 前端依赖配置
-└── tsconfig.json       # TypeScript 配置
-```
-
-## CI/CD
-
-项目使用 GitHub Actions 进行 CI/CD 配置，配置文件位于 `.github/workflows/release.yml`。主要流程包括：
-
-1. 代码检查
-2. 构建前端和后端
-3. 生成发布包
-4. 发布到 GitHub Releases
-
-## API
-
-### 前端调用的后端接口
-
-1. **test_etcd_connection**
-   - 功能：测试 ETCD 连接
-   - 参数：
-     - hosts: Vec<String> - ETCD 主机地址列表
-     - username: Option<String> - 用户名（可选）
-     - password: Option<String> - 密码（可选）
-   - 返回：Result<bool, String> - 连接是否成功
-
-2. **connect_etcd**
-   - 功能：连接到 ETCD
-   - 参数：
-     - hosts: Vec<String> - ETCD 主机地址列表
-     - username: Option<String> - 用户名（可选）
-     - password: Option<String> - 密码（可选）
-   - 返回：Result<bool, String> - 连接是否成功
-
-3. **save_connection_config**
-   - 功能：保存连接配置
-   - 参数：
-     - config: ConnectionConfig - 连接配置
-   - 返回：Result<(), String> - 保存是否成功
-
-4. **get_saved_connections**
-   - 功能：获取保存的连接配置
-   - 参数：无
-   - 返回：Result<Vec<ConnectionConfig>, String> - 连接配置列表
-
-5. **delete_connection**
-   - 功能：删除连接配置
-   - 参数：
-     - name: String - 连接名称
-   - 返回：Result<(), String> - 删除是否成功
-
-6. **get_key_values**
-   - 功能：获取键值对
-   - 参数：
-     - prefix: String - 键前缀
-     - _limit: Option<i64> - 限制数量（可选）
-   - 返回：Result<Vec<KeyValue>, String> - 键值对列表
-
-7. **set_key_value**
-   - 功能：设置键值对
-   - 参数：
-     - key: String - 键
-     - value: String - 值
-   - 返回：Result<(), String> - 设置是否成功
-
-8. **delete_key**
-   - 功能：删除键
-   - 参数：
-     - key: String - 键
-   - 返回：Result<(), String> - 删除是否成功
-
-## 快速开始
-
-### 安装依赖
 ```bash
 npm install
 ```
 
-### 开发模式
+### Development Mode
+
 ```bash
 npm run dev
 ```
 
-### 构建应用
+### Build Application
+
 ```bash
 npm run build
 ```
 
-### 运行 Tauri 命令
+### Run Tauri Commands
+
 ```bash
 npm run tauri [command]
 ```
 
-## 文档
+## API
 
-详细文档请参考 `docs` 目录：
-- [接口文档](docs/api.md)
-- [Changelog](docs/changelog.md)
+### Backend Commands
+
+1. **test_etcd_connection**
+   - Purpose: Test ETCD connection
+   - Parameters:
+     - hosts: Vec - ETCD host addresses
+     - username: Option - Username (optional)
+     - password: Option - Password (optional)
+   - Returns: Result<bool, String>
+
+2. **connect_etcd**
+   - Purpose: Connect to ETCD
+   - Parameters:
+     - hosts: Vec - ETCD host addresses
+     - username: Option - Username (optional)
+     - password: Option - Password (optional)
+   - Returns: Result<bool, String>
+
+3. **save_connection_config**
+   - Purpose: Save connection configuration
+   - Parameters:
+     - config: ConnectionConfig - Connection configuration
+   - Returns: Result<(), String>
+
+4. **get_saved_connections**
+   - Purpose: Get saved connection configurations
+   - Parameters: None
+   - Returns: Result<Vec, String>
+
+5. **delete_connection**
+   - Purpose: Delete connection configuration
+   - Parameters:
+     - name: String - Connection name
+   - Returns: Result<(), String>
+
+6. **get_key_values**
+   - Purpose: Get key-value pairs
+   - Parameters:
+     - prefix: String - Key prefix
+     - _limit: Option - Limit count (optional)
+   - Returns: Result<Vec, String>
+
+7. **set_key_value**
+   - Purpose: Set key-value pair
+   - Parameters:
+     - key: String - Key
+     - value: String - Value
+   - Returns: Result<(), String>
+
+8. **delete_key**
+   - Purpose: Delete key
+   - Parameters:
+     - key: String - Key
+   - Returns: Result<(), String>
+
+## CI/CD
+
+The project uses GitHub Actions for CI/CD. Configuration files are located in `.github/workflows/release.yml`. Main workflows include:
+
+1. Code linting
+2. Build frontend and backend
+3. Generate release packages
+4. Publish to GitHub Releases
+
+## Documentation
+
+For detailed documentation, please refer to the `docs` directory:
+- [API Documentation](/septemxx/etcd_client/blob/main/docs/api.md)
+- [Changelog](/septemxx/etcd_client/blob/main/docs/changelog.md)
+
+## License
+
+MIT License
