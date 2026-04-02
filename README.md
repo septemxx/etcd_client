@@ -2,6 +2,8 @@
 
 A cross-platform ETCD management tool built with Tauri and React, providing an intuitive and efficient interface for managing ETCD key-value pairs.
 
+> **中文版本**: [中文 README](./README.zh-CN.md)
+
 ## Overview
 
 ETCD Client is a desktop application developed using Tauri and React, designed to provide a user-friendly interface for managing ETCD key-value stores. It supports connection management, CRUD operations on key-value pairs, and intuitive tree-based key navigation.
@@ -62,7 +64,8 @@ etcd_client/
 │   ├── Cargo.toml      # Rust dependencies
 │   └── tauri.conf.json # Tauri configuration
 ├── docs/               # Documentation
-├── README.md           # Project documentation
+├── README.md           # This file (English)
+├── README.zh-CN.md     # Chinese version
 ├── package.json        # Frontend dependencies
 └── tsconfig.json       # TypeScript configuration
 ```
