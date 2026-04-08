@@ -44,7 +44,7 @@ ETCD Client is a desktop application developed using Tauri and React, designed t
 ## Project Structure
 
 ```
-etcd_client/
+etcd_ui/
 ├── .github/            # GitHub configurations
 │   └── workflows/      # CI/CD configuration
 ├── public/             # Static assets
@@ -178,8 +178,8 @@ The project uses GitHub Actions for CI/CD. Configuration files are located in `.
 ## Documentation
 
 For detailed documentation, please refer to the `docs` directory:
-- [API Documentation](/septemxx/etcd_client/blob/main/docs/api.md)
-- [Changelog](/septemxx/etcd_client/blob/main/docs/changelog.md)
+- [API Documentation](/septemxx/etcd_ui/blob/main/docs/api.md)
+- [Changelog](/septemxx/etcd_ui/blob/main/docs/changelog.md)
 
 ## License
 
